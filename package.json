@@ -1,0 +1,34 @@
+{
+    "name": "parsify-plugin-hello-world",
+    "version": "0.0.1",
+    "description": "Parsify plugin for showing some text",
+    "main": "src/index.js",
+    "author": "Antoni Kepinski <a@kepinski.me> (https://kepinski.me)",
+    "bugs": {
+        "url": "https://github.com/parsify-dev/plugin-boilerplate-javascript/issues"
+    },
+    "scripts": {
+        "test": "xo && nyc ava"
+    },
+    "engines": {
+        "node": ">=10"
+    },
+    "license": "MIT",
+    "repository": "parsify-dev/plugin-boilerplate-javascript",
+    "homepage": "https://github.com/parsify-dev/plugin-boilerplate-javascript",
+    "keywords": [
+        "parsify",
+        "parsify-plugin",
+        "plugin",
+        "expression-parser",
+        "parser",
+        "expression"
+    ],
+    "devDependencies": {
+        "ava": "^3.5.0",
+        "coveralls": "^3.0.9",
+        "nyc": "^15.0.0",
+        "xo": "^0.28.0"
+    },
+    "dependencies": {}
+}
