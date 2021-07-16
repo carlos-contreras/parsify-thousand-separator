@@ -1,5 +1,5 @@
 {
-    "name": "parsify-plugin-hello-world",
+    "name": "thousand-separator",
     "version": "0.0.1",
     "description": "Parsify plugin for showing some text",
     "main": "src/index.js",

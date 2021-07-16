@@ -5,26 +5,24 @@
 	You can add options for customization (in this case `upperCase`).
 	It receives the expression, which you need to validate and either do something with it or return the original expression.
 */
-module.exports = ({upperCase = false} = {}) => async expression => {
-	/*
-		Users can't set individual arguments for each plugin in Parsify Desktop.
-		Instead, they can use the global configuration in settings, which uses environmental variables.
-		You may want to remove the following block if you are not going to use this plugin in Parsify Desktop.
-	*/
-	if (process.env.UPPER_CASE) {
-		// Since enviromental variables are just strings, we need to parse them.
-		upperCase = process.env.UPPER_CASE === 'true' && true;
+
+module.exports = _ /* Options */ => async expression => {
+	const DEFAULT_SEPARATOR = ',';
+	const separatorMatches = process.env.THOUSAND_SEPARATOR && process.env.THOUSAND_SEPARATOR.match(/\W|_/);
+	const thousandSeparator = separatorMatches ? separatorMatches[0] : DEFAULT_SEPARATOR;
+	const findNumbersRegex = new RegExp(`\\d{1,3}(?:${thousandSeparator}\\d{3})+`, 'g');
+	const replaceRegex = new RegExp(`${thousandSeparator}`, 'g');
+	const mappings = [];
+	let numberMatches = findNumbersRegex.exec(expression);
+
+	while (numberMatches) {
+		mappings.push([numberMatches[0], numberMatches[0].replace(replaceRegex, '')]);
+		numberMatches = findNumbersRegex.exec(expression);
 	}
 
-	// Validate the expression to see if it should be processed by your plugin
-	if (expression === 'hello') {
-		if (upperCase) {
-			return 'HELLO WORLD!';
-		}
+	mappings.forEach(pair => {
+		expression = expression.replace(pair[0], pair[1]);
+	});
 
-		return 'hello world!';
-	}
-
-	// If the expression validation fails, just return the expression
 	return expression;
 };

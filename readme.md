@@ -1,4 +1,4 @@
-# Parsify Plugin Hello World
+# Parsify Thousand Separator Plugin
 
 [![Build Status](https://travis-ci.com/parsify-dev/plugin-boilerplate-typescript.svg?branch=master)](https://travis-ci.com/parsify-dev/plugin-boilerplate-typescript) 
 [![Coverage Status](https://coveralls.io/repos/github/parsify-dev/plugin-boilerplate-typescript/badge.svg?branch=master)](https://coveralls.io/github/parsify-dev/plugin-boilerplate-typescript?branch=master)
@@ -6,41 +6,24 @@
 
 ## About
 
-This plugin displays the `hello world!` message, when the user enters `hello` expression.
+This plugin supports having a thousand separator on the numbers, e.g: `1_000_000`, `123,456,789.52`
 
 ## Install
 
 ```
-$ npm install @parsify/core parsify-plugin-hello-world
+$ npm install @parsify/core parsify-thousand-separator
 ```
 
 ## Usage
 
 ```js
 import Parsify from '@parsify/core';
-import parsifyPluginHelloWorld from 'parsify-plugin-hellow-world';
+import parsifyThousandSeparator from 'parsify-thousand-separator';
 
 const parsify = new Parsify([
-    parsifyPluginHelloWorld();
+    parsifyThousandSeparator();
 ]);
 ```
-
-## API
-
-#### parsifyPluginHelloWorld(options?)
-
-##### options
-
-Type: `object`
-
-Any of the options below
-
-###### upperCase
-
-Type: `boolean`\
-Default: `process.env.UPPER_CASE`
-
-Whether the output should be upper case or not.
 
 ## License
 
